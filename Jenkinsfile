@@ -49,7 +49,7 @@ pipeline {
             script {
               docker.withRegistry('https://index.docker.io/v1/', 'dockerlogin') {
                 def commitHash = env.GIT_COMMIT.take(7)
-                def dockerImage = docker.build("kritika89/sysfoo:${f58477c}", "./")
+                def dockerImage = docker.build("kritika89/sysfoo:${commitHash}", "./")
                 dockerImage.push()
                 dockerImage.push("latest")
                 dockerImage.push("dev")
